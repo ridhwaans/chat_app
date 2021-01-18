@@ -4,13 +4,15 @@ class ChannelsController < ApplicationController
   # GET /channels
   def index
     @channels = Channel.all
-
-    render json: @channels
+    #render json: @channels
+    render json: ChannelSerializer.new(@channels)
   end
 
   # GET /channels/1
   def show
-    render json: @channel
+    #render json: @channel
+    channel = Channel.find(params[:id])
+    render json: ChannelSerializer.new(channel)
   end
 
   # POST /channels

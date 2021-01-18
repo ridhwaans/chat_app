@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
           login!
           render json: {
             logged_in: true,
-            user: @user
+            user: UserSerializer.new(@user),
+            user_rooms: ChannelSerializer.new(@user.channels)
           }
         else
           render json: { 

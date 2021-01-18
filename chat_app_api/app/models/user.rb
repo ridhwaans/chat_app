@@ -1,8 +1,10 @@
 class User < ApplicationRecord
     #has_secure_password 
-    #https://stackoverflow.com/questions/34526544/undefined-method-authenticate-in-ruby-on-rails
+    # https://stackoverflow.com/questions/34526544/undefined-method-authenticate-in-ruby-on-rails
     # https://stackoverflow.com/questions/23723319/getting-password-cant-be-blank-with-has-secure-password/28573198
 
+    has_many :messages
+    has_many :channels, through: :messages
     attr_accessor :password
     validates :username, :presence => true, :length => { :in => 3..20 }
     validates_length_of :password, :in => 6..20, :on => :create

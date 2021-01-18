@@ -29,8 +29,6 @@ class UsersController < ApplicationController
     
   def create
     @user = User.new(user_params)
-    puts @user.username
-    puts @user.password
       if @user.save
           login!  
           render json: {
