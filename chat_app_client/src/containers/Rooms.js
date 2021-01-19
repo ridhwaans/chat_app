@@ -23,7 +23,6 @@ class Rooms extends Component {
     }
 
     render() {
-        console.log("PROPS", this.props.allRooms);
         return (
             <div>
                 <h1>Current Rooms</h1>

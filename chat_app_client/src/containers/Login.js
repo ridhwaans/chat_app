@@ -32,7 +32,6 @@ class Login extends Component {
     axios.post('/login', {user}, {withCredentials: true})
         .then(response => {
           if (response.data.logged_in) {
-            console.log(this.props);
             this.props.handleLogin(response.data)
             this.redirect();
           } else {
@@ -53,7 +52,6 @@ class Login extends Component {
       }
 
     handleErrors = () => {
-        console.log("HIT HTERE")
       };
 
 

@@ -16,6 +16,8 @@ class SessionsController < ApplicationController
         end
     end
     def is_logged_in?
+      puts "WTF IS GOING ON"
+      puts current_user
         if logged_in? && current_user
           render json: {
             logged_in: true,

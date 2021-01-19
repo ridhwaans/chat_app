@@ -10,6 +10,7 @@ import Login from "./containers/Login";
 import Signup from "./containers/Signup";
 import Rooms from './containers/Rooms';
 import RoomShow from './containers/RoomShow';
+import { AppContext } from "./libs/contextLib";
 
 class App extends Component {
   constructor(props) {
@@ -25,11 +26,9 @@ class App extends Component {
       }
      };
   };
-
+  
   componentDidMount() {
-    this.loginStatus()
   }
-
 
   handleLogin = (data) => {
     this.setState({
@@ -50,18 +49,6 @@ class App extends Component {
     user: {}
     })
   }
-  
-  loginStatus = () => {
-    axios.get('/logged_in', {withCredentials: true})    
-  .then(response => {
-      if (response.data.logged_in) {
-        this.handleLogin(response)
-      } else {
-        this.handleLogout()
-      }
-    })
-    .catch(error => console.log('api errors:', error))
-  };
   
   updateAppStateRoom = (newRoom) => {
     this.setState({
@@ -125,7 +112,6 @@ class App extends Component {
           <Nav activeKey={window.location.pathname}>
             {this.state.isLoggedIn ? (
               <>
-              {console.log(this.state)}
               <Navbar.Text> Welcome, {this.state.user.data.attributes.username} </Navbar.Text>
               <Nav.Item><Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
               </Nav.Item>
@@ -144,36 +130,36 @@ class App extends Component {
         </Navbar.Collapse>
       </Navbar>
       <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route exact path="/login"
-       render={ (props) => (<Login {...props}
-                  handleLogin={this.handleLogin} />) } />
-      <Route exact path="/signup"
-        render={ (props) => (<Signup {...props}
-                  handleLogin={this.handleLogin} />) } />
-      <Route exact path='/rooms' 
-        render={ (props) => (<Rooms {...props}
-              allRooms={this.state.allRooms}
-              handleSubscribe={this.subscribeToRoom}
-              currentUser={this.state.user.data}
-            />
-          )} />
-      <Route exact path='/rooms/:id' 
-        render={ (props) => {
-          return this.state.isLoggedIn ? (<RoomShow {...props}
-          cableApp={this.props.cableApp}
-          getRoomData={this.getRoomData}
-          updateApp={this.updateAppStateRoom}
-          roomData={this.state.currentRoom}
-          currentUser={this.state.user.data}
-        />
-        ) : (
-          <Redirect to='/rooms' />
-        )
-        }} />
-    </Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/login"
+        render={ (props) => (<Login {...props}
+                    handleLogin={this.handleLogin} />) } />
+        <Route exact path="/signup"
+          render={ (props) => (<Signup {...props}
+                    handleLogin={this.handleLogin} />) } />
+        <Route exact path='/rooms' 
+          render={ (props) => (<Rooms {...props}
+                allRooms={this.state.allRooms}
+                handleSubscribe={this.subscribeToRoom}
+                currentUser={this.state.user.data}
+              />
+            )} />
+        <Route exact path='/rooms/:id' 
+          render={ (props) => {
+            return this.state.isLoggedIn ? (<RoomShow {...props}
+            cableApp={this.props.cableApp}
+            getRoomData={this.getRoomData}
+            updateApp={this.updateAppStateRoom}
+            roomData={this.state.currentRoom}
+            currentUser={this.state.user.data}
+          />
+          ) : (
+            <Redirect to='/rooms' />
+          )
+          }} />
+      </Switch>
     </div>
   );
   }

@@ -3633,3 +3633,318 @@ Processing by ChannelsController#index as */*
 Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.5ms | Allocations: 2272)
 
 
+Started POST "/login" for 127.0.0.1 at 2021-01-18 19:19:23 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "qwerty"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+  [1m[36mChannel Load (0.4ms)[0m  [1m[34mSELECT "channels".* FROM "channels" INNER JOIN "messages" ON "channels"."id" = "messages"."channel_id" WHERE "messages"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/serializers/user_serializer.rb:5:in `uniq'
+Completed 200 OK in 205ms (Views: 3.7ms | ActiveRecord: 8.6ms | Allocations: 17261)
+
+
+Started GET "/channels" for 127.0.0.1 at 2021-01-18 19:19:23 -0500
+Processing by ChannelsController#index as */*
+  [1m[36mChannel Load (0.4ms)[0m  [1m[34mSELECT "channels".* FROM "channels"[0m
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "messages" ON "users"."id" = "messages"."user_id" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/serializers/channel_serializer.rb:5:in `uniq'
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.8ms | Allocations: 4679)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:19:26 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 104)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:21:11 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 7ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 99)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:21:51 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 96)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:22:29 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 96)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:22:30 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 96)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-01-18 19:22:35 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "qwerty"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+  [1m[36mChannel Load (0.4ms)[0m  [1m[34mSELECT "channels".* FROM "channels" INNER JOIN "messages" ON "channels"."id" = "messages"."channel_id" WHERE "messages"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/serializers/user_serializer.rb:5:in `uniq'
+Completed 200 OK in 184ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 1506)
+
+
+Started GET "/channels" for 127.0.0.1 at 2021-01-18 19:22:36 -0500
+Processing by ChannelsController#index as */*
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT "channels".* FROM "channels"[0m
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "messages" ON "users"."id" = "messages"."user_id" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/serializers/channel_serializer.rb:5:in `uniq'
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.6ms | Allocations: 2287)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:22:37 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 96)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:22:39 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 96)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-01-18 19:22:46 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "qwerty"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+  [1m[36mChannel Load (0.4ms)[0m  [1m[34mSELECT "channels".* FROM "channels" INNER JOIN "messages" ON "channels"."id" = "messages"."channel_id" WHERE "messages"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/serializers/user_serializer.rb:5:in `uniq'
+Completed 200 OK in 183ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 1502)
+
+
+Started GET "/channels" for 127.0.0.1 at 2021-01-18 19:22:46 -0500
+Processing by ChannelsController#index as */*
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT "channels".* FROM "channels"[0m
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "messages" ON "users"."id" = "messages"."user_id" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/serializers/channel_serializer.rb:5:in `uniq'
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.7ms | Allocations: 2272)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:22:48 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 96)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:22:49 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 96)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:25:22 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 96)
+
+
+Started GET "/logged_in" for ::1 at 2021-01-18 19:27:41 -0500
+Processing by SessionsController#is_logged_in? as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started GET "/logged_in" for ::1 at 2021-01-18 19:30:59 -0500
+Processing by SessionsController#is_logged_in? as */*
+Completed 200 OK in 0ms (Views: 0.1ms | Allocations: 101)
+
+
+Started GET "/logged_in" for ::1 at 2021-01-18 19:31:28 -0500
+Processing by SessionsController#is_logged_in? as */*
+Completed 200 OK in 0ms (Views: 0.1ms | Allocations: 175)
+
+
+Started GET "/logged_in" for ::1 at 2021-01-18 19:31:49 -0500
+Processing by SessionsController#is_logged_in? as */*
+Completed 200 OK in 0ms (Views: 0.1ms | Allocations: 176)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-01-18 19:34:52 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "qwerty"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+  [1m[36mChannel Load (0.3ms)[0m  [1m[34mSELECT "channels".* FROM "channels" INNER JOIN "messages" ON "channels"."id" = "messages"."channel_id" WHERE "messages"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/serializers/user_serializer.rb:5:in `uniq'
+Completed 200 OK in 202ms (Views: 4.4ms | ActiveRecord: 5.3ms | Allocations: 17274)
+
+
+Started GET "/channels" for 127.0.0.1 at 2021-01-18 19:34:53 -0500
+Processing by ChannelsController#index as */*
+  [1m[36mChannel Load (0.3ms)[0m  [1m[34mSELECT "channels".* FROM "channels"[0m
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "messages" ON "users"."id" = "messages"."user_id" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/serializers/channel_serializer.rb:5:in `uniq'
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 16.9ms | ActiveRecord: 0.8ms | Allocations: 4708)
+
+
+Started GET "/logged_in" for ::1 at 2021-01-18 19:35:04 -0500
+Processing by SessionsController#is_logged_in? as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 116)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-01-18 19:37:05 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/application_controller.rb:4:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/sessions_controller.rb:1:in `<main>'
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:37:44 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NoMethodError (undefined method `protect_from_forgery' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:3:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/sessions_controller.rb:1:in `<main>'
+Started POST "/login" for 127.0.0.1 at 2021-01-18 19:37:49 -0500
+  
+NoMethodError (undefined method `protect_from_forgery' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:3:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/sessions_controller.rb:1:in `<main>'
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:41:51 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 2262)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-01-18 19:42:01 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "qwerty"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+  [1m[36mChannel Load (0.4ms)[0m  [1m[34mSELECT "channels".* FROM "channels" INNER JOIN "messages" ON "channels"."id" = "messages"."channel_id" WHERE "messages"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/serializers/user_serializer.rb:5:in `uniq'
+Completed 200 OK in 200ms (Views: 3.9ms | ActiveRecord: 5.1ms | Allocations: 14387)
+
+
+Started GET "/channels" for 127.0.0.1 at 2021-01-18 19:42:01 -0500
+Processing by ChannelsController#index as */*
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT "channels".* FROM "channels"[0m
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "messages" ON "users"."id" = "messages"."user_id" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/serializers/channel_serializer.rb:5:in `uniq'
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+Completed 200 OK in 30ms (Views: 29.3ms | ActiveRecord: 0.6ms | Allocations: 4686)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:43:59 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 103)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:44:23 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 103)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-01-18 19:44:27 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "qwerty"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+  [1m[36mChannel Load (0.4ms)[0m  [1m[34mSELECT "channels".* FROM "channels" INNER JOIN "messages" ON "channels"."id" = "messages"."channel_id" WHERE "messages"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/serializers/user_serializer.rb:5:in `uniq'
+Completed 200 OK in 184ms (Views: 1.4ms | ActiveRecord: 0.6ms | Allocations: 1495)
+
+
+Started GET "/channels" for 127.0.0.1 at 2021-01-18 19:44:27 -0500
+Processing by ChannelsController#index as */*
+  [1m[36mChannel Load (0.3ms)[0m  [1m[34mSELECT "channels".* FROM "channels"[0m
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "messages" ON "users"."id" = "messages"."user_id" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/serializers/channel_serializer.rb:5:in `uniq'
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.7ms | Allocations: 2281)
+
+
+Started GET "/logged_in" for 127.0.0.1 at 2021-01-18 19:44:33 -0500
+Processing by SessionsController#is_logged_in? as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 99)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-01-18 19:45:37 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "qwerty"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+  [1m[36mChannel Load (0.4ms)[0m  [1m[34mSELECT "channels".* FROM "channels" INNER JOIN "messages" ON "channels"."id" = "messages"."channel_id" WHERE "messages"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/serializers/user_serializer.rb:5:in `uniq'
+Completed 200 OK in 183ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 1508)
+
+
+Started GET "/channels" for 127.0.0.1 at 2021-01-18 19:45:37 -0500
+Processing by ChannelsController#index as */*
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT "channels".* FROM "channels"[0m
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "messages" ON "users"."id" = "messages"."user_id" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/serializers/channel_serializer.rb:5:in `uniq'
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.7ms | Allocations: 2281)
+
+
+Started POST "/login" for 127.0.0.1 at 2021-01-18 19:48:09 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "qwerty"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+  [1m[36mChannel Load (0.4ms)[0m  [1m[34mSELECT "channels".* FROM "channels" INNER JOIN "messages" ON "channels"."id" = "messages"."channel_id" WHERE "messages"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/serializers/user_serializer.rb:5:in `uniq'
+Completed 200 OK in 183ms (Views: 1.5ms | ActiveRecord: 0.7ms | Allocations: 1493)
+
+
+Started GET "/channels" for 127.0.0.1 at 2021-01-18 19:48:09 -0500
+Processing by ChannelsController#index as */*
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT "channels".* FROM "channels"[0m
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "messages" ON "users"."id" = "messages"."user_id" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/serializers/channel_serializer.rb:5:in `uniq'
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.8ms | Allocations: 2281)
+
+
+Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2021-01-18 20:03:35 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
+  
+Started POST "/login" for 127.0.0.1 at 2021-01-18 20:04:40 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"qwerty", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "qwerty"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+  [1m[36mChannel Load (0.3ms)[0m  [1m[34mSELECT "channels".* FROM "channels" INNER JOIN "messages" ON "channels"."id" = "messages"."channel_id" WHERE "messages"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/serializers/user_serializer.rb:5:in `uniq'
+Completed 200 OK in 202ms (Views: 3.7ms | ActiveRecord: 5.2ms | Allocations: 17282)
+
+
+Started GET "/channels" for 127.0.0.1 at 2021-01-18 20:04:41 -0500
+Processing by ChannelsController#index as */*
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT "channels".* FROM "channels"[0m
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "messages" ON "users"."id" = "messages"."user_id" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/serializers/channel_serializer.rb:5:in `uniq'
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."channel_id" = $1[0m  [["channel_id", 1]]
+  ↳ app/controllers/channels_controller.rb:8:in `index'
+Completed 200 OK in 46ms (Views: 45.3ms | ActiveRecord: 0.7ms | Allocations: 4689)
+
+
