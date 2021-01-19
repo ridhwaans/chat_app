@@ -33,7 +33,7 @@ If I had more time, I will:
 2) contribute more test cases to reach an above 90% test coverage across the application  
 3) work on setting up a live demo instance using a platform as a service such as Heroku. As a result, it will eliminate setup & installation times  
 4) containerize the application to reduce installation complexity and system depedencies. Using Docker or similar   orchestration, one can setup service discovery and provide runnable images that help with platform independence  
-5) refactor to cleanup any unnecessary code or dependencies, invest in front end automation such as selenium, add more notes on assumptions, tradeoffs in design & implementation  
+5) refactor to cleanup any unnecessary code or dependencies, invest in front end automation such as selenium, add screenshots, more notes on assumptions, tradeoffs in design & implementation  
   
 ## installation instructions
 
@@ -82,7 +82,6 @@ $ gem install rails
 $ gem install bundler
 ```  
 note:  
-`<project_directory>` is `chat_app`  
 `<ruby_version>` is `3.0.0`  
 
 3) if on Windows, get Linux and Windows Terminal
@@ -108,18 +107,21 @@ Enter and confirm the password. Then exit the PostgreSQL client
 postgres=# \q
 ```
 b) In terminal, clone the `chat_app` GitHub repository using the provided HTTPS or SSH URL  
-c) `cd` to the `chat_app` directory containing the front-end client and back-end API projects  
+c) `cd` to the `chat_app` directory containing the front-end client and back-end API projects 
+
 d) Back-end  
 - `cd` to the `chat_app_api` subdirectory  
 - run `bundle install`  
 - after the postgres is running, run `rake db:migrate` to sync the application database
 - run `rails s` to launch the API on port `3000`  
 - open `localhost:3000` in the browser  
+
 e) Front-end  
 - `cd` to the `chat_app_client` subdirectory  
 - run `npm install`  
 - run `yarn start` to launch the client on port `3001`  
 - open `localhost:3001` in the browser  
+
 f) Exit the server(s) `ctrl-c or ^C`  
 
 ## testing
